@@ -5,13 +5,14 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/c56b547e95.js" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="style.css">
-</head>
+    <style>
+      body{
+        background-image: url(https://images.unsplash.com/photo-1603484477859-abe6a73f9366?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=sj-objio-XFWiZTa2Ub0-unsplash.jpgimg/crumple.jpg); 
+        background-size: cover;
+      }
+    </style>
+  </head>
 <body>
-  <style>
-    body{
-      background-image: url(../img/crumple.jpg); background-size: cover;
-    }
-  </style>
 
 <div class="container">
     <div class="page-header text-center">
@@ -42,7 +43,7 @@
         </div>
 
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 entries">
           <h3>Messages</h3>
           <ul class="messages">
           <% for(var i=0; i<messages.length; i++) {%>
@@ -58,18 +59,27 @@
           <% } %>
           </ul>
 
+
+          <!-- if conditional to disable the form and enable a button with JS to perform a put. 
+          Could add a class to submit button in case we wanted a put
+          Then event listener would be lookoing for that class and if it doesn't find it it won't add that event listener.
+          Modify put code to save the fields that you're modifiyng.
+          In findOneAndUpdate just find the date and other fields should be in their place.
+         -->
+
           <h2>Add a message</h2>
         <% if (user.local.email) { %>
           <form action="/messages" method="POST">
             <input type="text" value="<%= user.local.email %>" name="name">
             <textarea name="entry1" rows="5" cols="50"><%=current?.entry1%></textarea>
             <input type="text" placeholder="message" name="msg">
-            <input type="date" placeholder="Enter Date" name="date">
+            <input type="date" placeholder="Enter Date" name="date" required>
             <button type="submit">Submit</button>
           </form>
         </div>
         <% } %>
 
+</div>
 </div>
 
 <script src="main.js"></script>

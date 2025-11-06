@@ -48,7 +48,7 @@ module.exports = function(app, passport, db) {
       req.body.thumbDown -1;
       console.log(thumbLogic)
       db.collection('messages')
-        .findOneAndUpdate({ name: req.body.name, msg: req.body.msg, archive: req.body.archive, entry1: req.body.entry1 }, {
+        .findOneAndUpdate({ name: req.body.name, msg: req.body.msg, date:req.body.date, archive: req.body.archive, entry1: req.body.entry1 }, {
           $set: {
             archive: archiveLogic
           }
@@ -60,6 +60,8 @@ module.exports = function(app, passport, db) {
           res.send(result)
         })
     })
+
+  
 
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg, date:req.body.date, entry1: req.body.entry1, archive: req.body.archive}, (err, result) => {
