@@ -15,13 +15,6 @@
     </style>
   </head>
 <body>
-</head>
-<body>
-  <style>
-    body{
-      background-image: url(../img/crumple.jpg); background-size: cover;
-    }
-  </style>
 
 <div class="container">
     <div class="page-header text-center">
@@ -54,8 +47,6 @@
 
         <div class="col-sm-6 entries">
           <div class="submissions">
-        <div class="col-sm-6">
-          <h3>Messages</h3>
           <ul class="messages">
             <h3>Notes</h3>
           <% for(var i=0; i<messages.length; i++) {%>
@@ -83,15 +74,13 @@
          -->
 
          <% if (user.local.email) { %>
-          <h2>Add a message</h2>
-        <% if (user.local.email) { %>
           <form action="/messages" method="POST">
             <h2>Add a message</h2>
             <input type="text" value="<%= user.local.email %>" name="name">
             <input type="text" placeholder="Subject" name="msg" class="subject" id="subject">
             <input type="date" placeholder="Enter Date" name="date" class="calendar" required>
             <input class="messageID" type="text" name="idinfo" id="idinfo">
-            <textarea name="entry1" rows="10" cols="70" class="journal" id="journal" placeholder="What's on your mind?"><%=current?.entry1%></textarea>
+            <textarea name="entry1" rows="10" cols="70" class="journal" id="journal"><%=current?.entry1%></textarea>
             <select placeholder="Change Font" name="fontSelector">
               <option id="fontoption" value="font-one">Change Font</option>
               <option id="krankyoption" value="kranky" >Kranky</option>
@@ -103,14 +92,12 @@
               <option id="acme" value="acme">Acme</option>
 
             </select>
-            <textarea name="entry1" rows="5" cols="50"><%=current?.entry1%></textarea>
-            <input type="text" placeholder="message" name="msg">
-            <input type="date" placeholder="Enter Date" name="date">
             <button type="submit">Submit</button>
           </form>
         </div>
         <% } %>
 
+</div>
 </div>
 
 <script src="main.js"></script>
