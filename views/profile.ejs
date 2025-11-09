@@ -5,6 +5,16 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/c56b547e95.js" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Butcherman&family=Kranky&family=Rubik+Moonrocks&family=Rubik+Puddles&family=Sacramento&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    <style>
+      body{
+        background-image: url(https://images.unsplash.com/photo-1603484477859-abe6a73f9366?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=sj-objio-XFWiZTa2Ub0-unsplash.jpgimg/crumple.jpg); 
+        background-size: cover;
+      }
+    </style>
+  </head>
+<body>
 </head>
 <body>
   <style>
@@ -42,26 +52,57 @@
         </div>
 
 
+        <div class="col-sm-6 entries">
+          <div class="submissions">
         <div class="col-sm-6">
           <h3>Messages</h3>
           <ul class="messages">
+            <h3>Notes</h3>
           <% for(var i=0; i<messages.length; i++) {%>
             <li class="message">
               <span><%= messages[i].title %></span>
               <span class="date"><%= messages[i].date %></span>
-              <span><%= messages[i].msg %></span>
-              <span><%= messages[i].entry1 %></span>
-              <span><button class="archive" aria-hidden="true">Archive</button></span>
+              <span class="title"><%= messages[i].msg %></span>
+              <span class="entry1"><%= messages[i].entry1 %></span>
+              <span class="messageID"><%= messages[i]._id %></span>
+              <span class="fontSelector"><%= messages[i].font %></span>
+              <span><button class="archive" aria-hidden="true">Edit</button></span>
               <!-- <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> -->
               <span><i class="fa-solid fa-trash" aria-hidden="true"></i></span>
             </li>
           <% } %>
           </ul>
+          </div>
 
+
+          <!-- if conditional to disable the form and enable a button with JS to perform a put. 
+          Could add a class to submit button in case we wanted a put
+          Then event listener would be lookoing for that class and if it doesn't find it it won't add that event listener.
+          Modify put code to save the fields that you're modifiyng.
+          In findOneAndUpdate just find the date and other fields should be in their place.
+         -->
+
+         <% if (user.local.email) { %>
           <h2>Add a message</h2>
         <% if (user.local.email) { %>
           <form action="/messages" method="POST">
+            <h2>Add a message</h2>
             <input type="text" value="<%= user.local.email %>" name="name">
+            <input type="text" placeholder="Subject" name="msg" class="subject" id="subject">
+            <input type="date" placeholder="Enter Date" name="date" class="calendar" required>
+            <input class="messageID" type="text" name="idinfo" id="idinfo">
+            <textarea name="entry1" rows="10" cols="70" class="journal" id="journal" placeholder="What's on your mind?"><%=current?.entry1%></textarea>
+            <select placeholder="Change Font" name="fontSelector">
+              <option id="fontoption" value="font-one">Change Font</option>
+              <option id="krankyoption" value="kranky" >Kranky</option>
+              <option id="tournewoption" value="tourney-one">Tourney</option>
+              <option id="sacramento" value="sacramento" >Sacramento</option>
+              <option id="butcherman" value="butcherman">Butcherman</option>
+              <option id="puddles" value="rubik-puddles">Puddles</option>
+              <option id="moonrocks" value="rubik-moonrocks">Moonrocks</option>
+              <option id="acme" value="acme">Acme</option>
+
+            </select>
             <textarea name="entry1" rows="5" cols="50"><%=current?.entry1%></textarea>
             <input type="text" placeholder="message" name="msg">
             <input type="date" placeholder="Enter Date" name="date">

@@ -13,15 +13,50 @@
 var archive = document.getElementsByClassName("archive");
 var trash = document.getElementsByClassName("fa-trash");
 // var thumbDown = document.getElementsByClassName("fa-thumbs-down");
+fontSelect = document.querySelector('select').addEventListener('change', changeFont)
+
+
+
+
+function changeFont () {
+document.querySelector('textarea').className = ' '
+document.querySelector('textarea').classList.add(document.querySelector('select').value+'-regular')
+}
 
 
 
 Array.from(archive).forEach(function (element) {
   element.addEventListener('click', function () {
-    const date = this.closest('li').querySelector('.date').innerText
-    window.location.href = `/profile?date=${encodeURIComponent(date)}`
+    var _id = this.closest('li').querySelector('.messageID').innerText;
+    var entry1 = this.closest('li').querySelector('.entry1').innerText;
+    var date = this.closest('li').querySelector('.date').innerText;
+    var subject = this.closest('li').querySelector('.title').innerText;
+    var font =  this.closest('li').querySelector('.fontSelector').innerText;
+// // fetch('/messages', {
+// //   method: 'put' ,
+// //   headers: { 'Content-Type': 'application/json' },
+// //   body: JSON.stringify({
+// //        '_id': _id
+// //   })
+// // })
+//   .then(res=> {
+//     if (res.ok)
+//       return res.json()
+//   })
+//   .then(response => {
+//     console.log(response)
+//   })
+    console.log(date)
+    document.querySelector('form .calendar').value = date
+    document.querySelector('form #journal').innerText = entry1
+    document.querySelector('form .subject').value = subject
+    document.querySelector('form .messageID').value = _id
+    document.querySelector('select').value = font
+    changeFont()
   });
 });
+
+
 
 
 // Array.from(thumbDown).forEach(function (element) {
@@ -53,8 +88,10 @@ Array.from(trash).forEach(function (element) {
   element.addEventListener('click', function () {
     const name = this.parentNode.parentNode.childNodes[1].innerText
     const msg = this.parentNode.parentNode.childNodes[5].innerText
-    // const date = this.parentNode.childNodes[3].innerText
-    const entry1 = this.parentNode.childNodes[7].innerText
+    const date = this.closest('li').querySelector('.date').innerText
+    const entry1 = this.closest('li').querySelector('.entry1').innerText
+    const _id = this.closest('li').querySelector('.messageID').innerText;
+
     fetch('/messages', {
       method: 'delete',
       headers: {
@@ -62,9 +99,9 @@ Array.from(trash).forEach(function (element) {
       },
       body: JSON.stringify({
         'name': name,
-        'msg': msg,
        'entry1': entry1,
-       'date': date
+       'date': date,
+       '_id' : _id
       })
     }).then(function (response) {
       window.location.reload()

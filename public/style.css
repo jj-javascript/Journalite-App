@@ -5,3 +5,183 @@ body{
 img{
   height: 200px;
 }
+
+
+.jumbotron{
+  background-color: aliceblue;
+}
+
+.profilebody {
+box-sizing: border-box;
+background-image: url(../img/crumple.jpg);
+background-size: cover;
+} 
+
+.well {
+  display: none;
+  width: 0%;
+}
+
+.entries{
+  width: 100%;
+  display:  flex;
+}
+
+.entries input {
+display: inline-flex;
+justify-content: space-evenly;
+gap: 10%;
+width: 25%;
+margin-bottom: 2%;
+cursor: url(../img/newpen3.png), 16 16, auto;
+}
+
+.entries form{
+  padding-left: 21%;
+
+}
+
+h2{
+  text-align: center;
+}
+
+.message{
+  width: 100%; 
+}
+
+.messageID {
+  display: none;
+}
+
+
+#journal{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1.05em;
+  line-height: 1.8;
+  resize: vertical;
+  min-height: 300px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+#journal::placeholder {
+  color: #b8a890;
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+#journal:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+}
+
+#idinfo {
+  display: none;
+}
+
+.submissions ul{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: flex-end;
+  height: 100%; 
+  width: 220px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #2dd9d97c; 
+  overflow-x: hidden; 
+  padding-top: 20px;
+}
+
+.submissions ul:hover{
+  background-color: #2dd9d9e8; 
+}
+
+
+
+.submissions li{
+  border: 1px solid black;
+  list-style-type: none;
+  width: 120%;
+  overflow: hidden;
+  padding-right: 5%;
+}
+
+li::target-text{
+  display: flex;
+}
+
+.kranky-regular {
+  font-family: "Kranky", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-one-regular{
+  font-weight: 200
+}
+
+.tourney-one-regular{
+  font-family: "Tourney", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.sacramento-regular {
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.butcherman-regular {
+  font-family: "Butcherman", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-puddles-regular {
+  font-family: "Rubik Puddles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-moonrocks-regular {
+  font-family: "Rubik Moonrocks", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.acme-regular {
+  font-family: "Acme", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+li span {
+  display: inline-flex;
+}
+
+
+#subject{
+  width: 45%;
+}
+
+h3{
+width: 100%;
+
+}
+
+.page-header{
+  padding-right: 2%;
+}
