@@ -1,6 +1,6 @@
-# Connections Manager
+# Journalite
 
-A full-stack Node.js and Express web application that allows users to keep track of all of their important connections as they build their network.
+A full-stack Node.js and Express web application that allows users to stay on top of their daily journaling practice and keep track of their journaling over time.
 
 ## [Live Demo](https://journalite-app-1.onrender.com)
 
